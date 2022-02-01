@@ -1,1 +1,3 @@
 plot(cars)
+
+"Hello friends"
