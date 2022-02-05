@@ -29,7 +29,7 @@ totalShipment2 <- totalShipment %>%
          December = ...14)
 
 namesGrouped <- unique(x = totalShipment2$names)
-View(namesGrouped)
+
 namesGroupedUnadjusted <- totalShipment2 %>% 
   filter(substr(totalShipment2$names, 1, 1) == "U")
 
@@ -42,7 +42,5 @@ newdf <- function(x){
 unadjustedNames <- unique(namesGroupedUnadjusted$names)
 
 for (i in unadjustedNames){
-  print(i)
-  print(newdf(i))
   assign(x = i, value = newdf(i))
 }
