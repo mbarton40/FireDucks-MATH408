@@ -42,5 +42,25 @@ newdf <- function(x){
 unadjustedNames <- unique(namesGroupedUnadjusted$names)
 
 for (i in unadjustedNames){
-  assign(x = i, value = newdf(i))
+  After_Split <- assign(x = i, value = newdf(i))
+  temp_Long_1 <- gather(After_Split, Month, Value, January:December, factor_key = TRUE)
+  temp_Long_2 <- temp_Long_1 %>%
+    mutate(Month = substring(Month,1,3)) %>%
+    mutate(MonYear = str_c(Month,"-",year))
+  temp_Long_3 <- temp_Long_2 %>%
+    arrange(year)
+  temp_Long_4 <- temp_Long_3 %>%
+    select(MonYear,Value)
+  temp_Long_5 <- ts(data = temp_Long_4$Value,
+          start = c(1992,1),
+          frequency = 12,
+          end = c(2019,12))
+  assign(x = i, value = temp_Long_5)
+  
 }
+
+plot(U11AVS, 
+     col=2,
+     main = "U11AVS vs U11BVS Time Series",
+     ylab = "Value")
+lines(U11BVS,col=3)
