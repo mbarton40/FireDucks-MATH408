@@ -1,14 +1,14 @@
 library(readxl)
 library(tidyverse)
 
-totalShipment <- read_excel("TSShipments_2-3-2022.xls",
+Shipments <- read_excel("TSShipments_2-3-2022.xls",
 col_names = FALSE, col_types = c("text",
 "text", "numeric", "numeric", "numeric",
 "numeric", "numeric", "numeric",
 "numeric", "numeric", "numeric",
 "numeric", "numeric", "numeric"))
 
-totalShipment2 <- totalShipment %>% 
+Shipments2 <- Shipments %>% 
   rename(names = ...1, 
          year = ...2,
          January = ...3,
@@ -24,10 +24,10 @@ totalShipment2 <- totalShipment %>%
          November = ...13, 
          December = ...14)
 
-namesGrouped <- unique(x = totalShipment2$names)
+namesGrouped <- unique(x = Shipments2$names)
 
-namesGroupedUnadjusted <- totalShipment2 %>% 
-  filter(substr(totalShipment2$names, 1, 1) == "U")
+namesGroupedUnadjusted <- Shipments2 %>% 
+  filter(substr(Shipments2$names, 1, 1) == "U")
 
 #Function that splits the large wide data frame
 #into individual data frames based on name
