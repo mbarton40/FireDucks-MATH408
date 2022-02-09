@@ -63,8 +63,22 @@ for (i in dataFiles){
                       frequency = 12,
                       end = c(2019,12))
     assign(x = j, value = temp_Long_5)
-    
+   
   }
+  
+  rm(After_Split)
+  rm(BaseFile)
+  rm(temp_Long_1)
+  rm(temp_Long_2)
+  rm(temp_Long_3)
+  rm(temp_Long_4)
+  rm(temp_Long_5)
+  rm(WideData)
+  rm(WideData_Unadjusted)
+  rm(i)
+  rm(j)
+  rm(FileNameToRead)
+  rm(TSnameList_Unadjusted)
   
 }
 
