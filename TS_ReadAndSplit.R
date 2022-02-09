@@ -1,16 +1,12 @@
 library(readxl)
-totalShipment <- read_excel("TSShipmentDataUSCensusBureau.xls",
+library(tidyverse)
+
+totalShipment <- read_excel("TSShipments_2-3-2022.xls",
 col_names = FALSE, col_types = c("text",
 "text", "numeric", "numeric", "numeric",
 "numeric", "numeric", "numeric",
 "numeric", "numeric", "numeric",
 "numeric", "numeric", "numeric"))
-# View(totalShipment)
-
-
-class(totalShipment)
-
-library(tidyverse)
 
 totalShipment2 <- totalShipment %>% 
   rename(names = ...1, 
@@ -33,7 +29,10 @@ namesGrouped <- unique(x = totalShipment2$names)
 namesGroupedUnadjusted <- totalShipment2 %>% 
   filter(substr(totalShipment2$names, 1, 1) == "U")
 
-newdf <- function(x){
+#Function that splits the large wide data frame
+#into individual data frames based on name
+
+splitTSdf <- function(x){
   df <- namesGroupedUnadjusted %>% 
     filter(names == x)
   return(df)
@@ -42,7 +41,7 @@ newdf <- function(x){
 unadjustedNames <- unique(namesGroupedUnadjusted$names)
 
 for (i in unadjustedNames){
-  After_Split <- assign(x = i, value = newdf(i))
+  After_Split <- assign(x = i, value = splitTSdf(i))
   temp_Long_1 <- gather(After_Split, Month, Value, January:December, factor_key = TRUE)
   temp_Long_2 <- temp_Long_1 %>%
     mutate(Month = substring(Month,1,3)) %>%
@@ -70,3 +69,4 @@ legend("bottomright",
        lty = 1,
        col = 2:3,
        cex = 1)
+
