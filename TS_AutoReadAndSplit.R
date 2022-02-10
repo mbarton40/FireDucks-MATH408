@@ -5,6 +5,8 @@ dataFiles <- list("TSShipments_2-3-2022.xls","TSInventoriesToShipments_2-8-2022.
                   "TSNewOrders_2-8-2022.xlsx", "TSTotalInventories_2-8-2022.xls",
                   "TSUnfilledOrders_2-8-2022.xls", "TSUnfilledOrdersToShipments_2-8-2022.xls")
 
+count_ts = 0
+
 for (i in dataFiles){
   FileNameToRead <- i
   
@@ -48,6 +50,7 @@ for (i in dataFiles){
   #This for loop takes the Wide Data Frame for unadjusted Data and splits it into
   #smaller data frames and then organizes them into Time Series data format.
   
+  
   for (j in TSnameList_Unadjusted){
     After_Split <- assign(x = j, value = splitTSdf(j))
     temp_Long_1 <- gather(After_Split, Month, Value, January:December, factor_key = TRUE)
@@ -63,8 +66,11 @@ for (i in dataFiles){
                       frequency = 12,
                       end = c(2019,12))
     assign(x = j, value = temp_Long_5)
+    count_ts = count_ts + 1
    
   }
+  
+  count_ts
   
   rm(After_Split)
   rm(BaseFile)
@@ -81,4 +87,3 @@ for (i in dataFiles){
   rm(TSnameList_Unadjusted)
   
 }
-
