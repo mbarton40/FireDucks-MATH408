@@ -70,8 +70,6 @@ for (i in dataFiles){
    
   }
   
-  count_ts
-  
   rm(After_Split)
   rm(BaseFile)
   rm(temp_Long_1)
@@ -87,3 +85,5 @@ for (i in dataFiles){
   rm(TSnameList_Unadjusted)
   
 }
+
+# print(count_ts)
