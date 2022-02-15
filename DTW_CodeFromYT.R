@@ -55,6 +55,8 @@ url_data <- "http://kdd.ics.uci.edu/databases/synthetic_control/synthetic_contro
 
 # http://kdd.ics.uci.edu/databases/synthetic_control/synthetic_control.html
 data <- read.table(url_data, header = F, sep = "")
+head(data)
+class(data)
 str(data)
 plot(data[,60], type = 'l')
 j <- c(5, 105, 205, 305, 405, 505)

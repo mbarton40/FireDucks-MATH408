@@ -58,6 +58,46 @@ for (i in unadjustedNames){
   
 }
 
+After_Split <- assign(x = i, value = splitTSdf(i))
+After_Split
+temp_Long_1 <- gather(After_Split, Month, Value, January:December, factor_key = TRUE)
+temp_Long_1
+temp_Long_2 <- temp_Long_1 %>%
+  mutate(Month = substring(Month,1,3)) %>%
+  mutate(MonYear = str_c(Month,"-",year))
+temp_Long_3 <- temp_Long_2 %>%
+  arrange(year)
+temp_Long_4 <- temp_Long_3 %>%
+  select(MonYear,Value)
+temp_Long_4
+temp_Long44 <- t(temp_Long_4)
+temp_Long44
+class(temp_Long44)
+
+temp_Long45 <- temp_Long44 %>%
+  as_tibble()
+  
+temp_Long46 <- temp_Long45 %>%
+  mutate(col_names = FALSE)
+view(temp_Long46)
+
+
+
+
+
+
+
+
+head(temp_Long45)
+view(temp_Long45)
+plot(temp_Long45)
+temp_Long_5 <- ts(data = temp_Long_4$Value,
+                  start = c(1992,1),
+                  frequency = 12,
+                  end = c(2019,12))
+assign(x = i, value = temp_Long_5)
+
+
 plot(U11AVS, 
      col=2,
      ylim = c(3000,12000),
