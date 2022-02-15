@@ -51,8 +51,10 @@ accuracy(f)
 ## Time series clustering
 
 # Data 
+url_data <- "http://kdd.ics.uci.edu/databases/synthetic_control/synthetic_control.data"
+
 # http://kdd.ics.uci.edu/databases/synthetic_control/synthetic_control.html
-data <- read.table(file.choose(), header = F, sep = "")
+data <- read.table(url_data, header = F, sep = "")
 str(data)
 plot(data[,60], type = 'l')
 j <- c(5, 105, 205, 305, 405, 505)
