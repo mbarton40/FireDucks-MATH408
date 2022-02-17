@@ -59,7 +59,6 @@ for (i in unadjustedNames){
 }
 
 #This is a trial to get wide data to try and use DTW
-
 After_Split <- assign(x = i, value = splitTSdf(i))
 After_Split
 temp_Long_1 <- gather(After_Split, Month, Value, January:December, factor_key = TRUE)
@@ -79,27 +78,41 @@ class(temp_Long44)
 temp_Long45 <- temp_Long44 %>%
   as_tibble()
 
-view(temp_Long45)
-class(temp_Long45)
+temp_Long46 <- temp_Long45[,1:336]
+view(temp_Long46)
+
+n <- 10
+s <- sample(1:336, n)
+
+s
+
+d <- temp_Long46[,s]
+view(d)
+str(d)
+
+d_trans <- t(d)
 
 
+view(d_trans)
 
-temp_Long_5 <- ts(data = temp_Long_4$Value,
-                  start = c(1992,1),
-                  frequency = 12,
-                  end = c(2019,12))
-assign(x = i, value = temp_Long_5)
+library(dtw)
+library(proxy)
+distance <- dist(d_trans, method = "DTW")
 
-
-plot(U11AVS, 
-     col=2,
-     ylim = c(3000,12000),
-     main = "U11AVS vs U11BVS Time Series",
-     ylab = "Value")
-lines(U11BVS,col=3)
-legend("bottomright",                           
-       c("U11AVS","U11BVS"),
-       lty = 1,
-       col = 2:3,
-       cex = 1)
+for (i in unadjustedNames){
+  After_Split <- assign(x = i, value = splitTSdf(i))
+  temp_Long_1 <- gather(After_Split, Month, Value, January:December, factor_key = TRUE)
+  temp_Long_2 <- temp_Long_1 %>%
+    mutate(Month = substring(Month,1,3)) %>%
+    mutate(MonYear = str_c(Month,"-",year))
+  temp_Long_3 <- temp_Long_2 %>%
+    arrange(year)
+  temp_Long_4 <- temp_Long_3 %>%
+    select(MonYear,Value)
+  temp_Long44 <- t(temp_Long_4)
+  temp_Long45 <- temp_Long44 %>%
+    as_tibble()
+  temp_Long46 <- temp_Long45[,1:336]
+  assign(x = i, value = temp_Long46)
+}
 
