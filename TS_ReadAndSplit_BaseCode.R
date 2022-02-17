@@ -58,6 +58,8 @@ for (i in unadjustedNames){
   
 }
 
+#This is a trial to get wide data to try and use DTW
+
 After_Split <- assign(x = i, value = splitTSdf(i))
 After_Split
 temp_Long_1 <- gather(After_Split, Month, Value, January:December, factor_key = TRUE)
