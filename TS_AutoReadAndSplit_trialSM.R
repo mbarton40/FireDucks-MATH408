@@ -64,17 +64,17 @@ for (i in dataFiles){
       arrange(year)
     temp_Long_4 <- temp_Long_3 %>%
       select(MonYear,Value)
-    temp_Long_5 <- temp_Long_4 %>%
-      rename(paste(j) <- Value)
+    assign(x = j, value = temp_Long_4)
+      
     
     unadjTS <- unadjTS %>%
       cbind()
       
-    # temp_Long_6 <- ts(data = temp_Long_4$Value,
-    #                   start = c(1992,1),
-    #                   frequency = 12,
-    #                   end = c(2019,12))
-    assign(x = j, value = temp_Long_6)
+    temp_Long_5 <- ts(data = temp_Long_4$Value,
+                      start = c(1992,1),
+                      frequency = 12,
+                      end = c(2019,12))
+    assign(x = paste(j,"_ts",sep=""), value = temp_Long_6)
     
     count_ts = count_ts + 1
    
