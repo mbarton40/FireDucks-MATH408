@@ -6,6 +6,7 @@ dataFiles <- list("TSShipments_2-3-2022.xls","TSInventoriesToShipments_2-8-2022.
                   "TSUnfilledOrders_2-8-2022.xls", "TSUnfilledOrdersToShipments_2-8-2022.xls")
 
 count_ts = 0
+unadjTS <- data.frame()
 
 for (i in dataFiles){
   FileNameToRead <- i
@@ -47,6 +48,8 @@ for (i in dataFiles){
   
   TSnameList_Unadjusted <- unique(WideData_Unadjusted$names)
   
+
+  
   #This for loop takes the Wide Data Frame for unadjusted Data and splits it into
   #smaller data frames and then organizes them into Time Series data format.
   
@@ -61,29 +64,48 @@ for (i in dataFiles){
       arrange(year)
     temp_Long_4 <- temp_Long_3 %>%
       select(MonYear,Value)
-    temp_Long_5 <- ts(data = temp_Long_4$Value,
-                      start = c(1992,1),
-                      frequency = 12,
-                      end = c(2019,12))
-    assign(x = j, value = temp_Long_5)
+    temp_Long_5 <- temp_Long_4 %>%
+      rename(paste(j) <- Value)
+    
+    unadjTS <- unadjTS %>%
+      cbind()
+      
+    # temp_Long_6 <- ts(data = temp_Long_4$Value,
+    #                   start = c(1992,1),
+    #                   frequency = 12,
+    #                   end = c(2019,12))
+    assign(x = j, value = temp_Long_6)
+    
     count_ts = count_ts + 1
    
   }
   
-  rm(After_Split)
-  rm(BaseFile)
-  rm(temp_Long_1)
-  rm(temp_Long_2)
-  rm(temp_Long_3)
-  rm(temp_Long_4)
-  rm(temp_Long_5)
-  rm(WideData)
-  rm(WideData_Unadjusted)
-  rm(i)
-  rm(j)
-  rm(FileNameToRead)
-  rm(TSnameList_Unadjusted)
+  # rm(After_Split)
+  # rm(BaseFile)
+  # rm(temp_Long_1)
+  # rm(temp_Long_2)
+  # rm(temp_Long_3)
+  # rm(temp_Long_4)
+  # rm(temp_Long_5)
+  # rm(WideData)
+  # rm(WideData_Unadjusted)
+  # rm(i)
+  # rm(j)
+  # rm(FileNameToRead)
+  # rm(TSnameList_Unadjusted)
   
 }
 
-# print(count_ts)
+our_mean_cluster <- function(m, eps = 500, plotResult = FALSE){
+  orderedMeans <- temp
+  
+view(temp_Long_4)
+  
+  
+  
+  
+}
+
+class(TSnameList_Unadjusted)
+view(TSnameList_Unadjusted)
+view(j)
