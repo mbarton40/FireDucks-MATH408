@@ -74,7 +74,7 @@ for (i in dataFiles){
                       start = c(1992,1),
                       frequency = 12,
                       end = c(2019,12))
-    assign(x = paste(j,"_ts",sep=""), value = temp_Long_6)
+    assign(x = paste(j,"_ts", sep = ""), value = temp_Long_5)
     
     count_ts = count_ts + 1
    
@@ -99,8 +99,7 @@ for (i in dataFiles){
 our_mean_cluster <- function(m, eps = 500, plotResult = FALSE){
   orderedMeans <- temp
   
-view(temp_Long_4)
-  
+
   
   
   
