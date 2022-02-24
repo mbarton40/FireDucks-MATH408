@@ -1,16 +1,15 @@
-library(readxl)
 library(tidyverse)
+library(lubridate)
+library(rio)
 
-dataFiles <- list("TSShipments_2-3-2022.xls","TSInventoriesToShipments_2-8-2022.xls",
-                  "TSNewOrders_2-8-2022.xlsx", "TSTotalInventories_2-8-2022.xls",
-                  "TSUnfilledOrders_2-8-2022.xls", "TSUnfilledOrdersToShipments_2-8-2022.xls")
+source("TS_DataFiles.R")
 
 count_ts = 0
 
-for (i in dataFiles){
+for (i in dataFiles_URL){
   FileNameToRead <- i
   
-  BaseFile <- read_excel(FileNameToRead,
+  BaseFile <- import(FileNameToRead,
                          col_names = FALSE, 
                          col_types = c("text", "text", "numeric", "numeric", "numeric",
                                        "numeric", "numeric", "numeric",
@@ -50,10 +49,12 @@ for (i in dataFiles){
   #This for loop takes the Wide Data Frame for unadjusted Data and splits it into
   #smaller data frames and then organizes them into Time Series data format.
   
-  
   for (j in TSnameList_Unadjusted){
     After_Split <- assign(x = j, value = splitTSdf(j))
-    temp_Long_1 <- gather(After_Split, Month, Value, January:December, factor_key = TRUE)
+    pre_Covid_AS <- After_Split %>%
+      slice_head(n = 28)
+    assign(x = j, value = pre_Covid_AS)
+    temp_Long_1 <- gather(pre_Covid_AS, Month, Value, January:December, factor_key = TRUE)
     temp_Long_2 <- temp_Long_1 %>%
       mutate(Month = substring(Month,1,3)) %>%
       mutate(MonYear = str_c(Month,"-",year))
@@ -61,29 +62,15 @@ for (i in dataFiles){
       arrange(year)
     temp_Long_4 <- temp_Long_3 %>%
       select(MonYear,Value)
-    temp_Long_5 <- ts(data = temp_Long_4$Value,
-                      start = c(1992,1),
-                      frequency = 12,
-                      end = c(2019,12))
-    assign(x = j, value = temp_Long_5)
+    temp_Long_5 <- ts(data = temp_Long_4$Value)
+    assign(x = paste(j,"_ts", sep = ""), value = temp_Long_5)
+    
     count_ts = count_ts + 1
    
   }
   
-  rm(After_Split)
-  rm(BaseFile)
-  rm(temp_Long_1)
-  rm(temp_Long_2)
-  rm(temp_Long_3)
-  rm(temp_Long_4)
-  rm(temp_Long_5)
-  rm(WideData)
-  rm(WideData_Unadjusted)
-  rm(i)
-  rm(j)
-  rm(FileNameToRead)
-  rm(TSnameList_Unadjusted)
-  
-}
+  rm(After_Split, pre_Covid_AS, BaseFile, temp_Long_1, temp_Long_2, temp_Long_3,
+     temp_Long_4, temp_Long_5, WideData, WideData_Unadjusted,
+     i, j, FileNameToRead, TSnameList_Unadjusted)
 
-# print(count_ts)
+}
