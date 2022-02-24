@@ -1,11 +1,11 @@
 source("TS_AutoReadAndSplit.R")
 
-plot(U11AVS, 
+plot(U11AVS_ts, 
      col=2,
      ylim = c(3000,12000),
      main = "U11AVS vs U11BVS Time Series",
      ylab = "Value")
-lines(U11BVS,
+lines(U11BVS_ts,
       col= 3)
 legend("bottomright",                           
        c("U11AVS","U11BVS"),
