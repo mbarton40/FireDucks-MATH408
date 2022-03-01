@@ -12,3 +12,4 @@ legend("bottomright",
        lty = 1,
        col = 2:3,
        cex = 1)
+

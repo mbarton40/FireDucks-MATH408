@@ -6,7 +6,7 @@ library(rio)
 #Drawing in the data file URLs
 source("TS_DataFiles.R")
 
-#Initializing name lists for the loop
+#Initializing name lists/variables for the loop
 UnadjNameList <- c()
 UnadjNameListWide <- c()
 
@@ -62,7 +62,8 @@ for (i in dataFiles_URL){
     #Splits df and cuts off COVID Years...Also creates regular df object
     After_Split <- assign(x = j, value = splitTSdf(j))
     pre_Covid_AS <- After_Split %>%
-      slice_head(n = 28)
+      slice_head(n = 28) %>%
+      slice_tail(n = 27)
     assign(x = j, value = pre_Covid_AS)
     
     #Formats data to get into ts and wide data objects
@@ -81,8 +82,14 @@ for (i in dataFiles_URL){
     
     #Creates a wide data object
     WideFormatDF <- as.data.frame(t(temp_Long_4))
+    
     colnames(WideFormatDF) <- WideFormatDF[1,]
     WideFormatDF <- WideFormatDF[-1,]
+    
+    row.names(WideFormatDF) <- NULL
+    curr_name <- as.data.frame(t(j))
+    WideFormatDF <- cbind(curr_name, WideFormatDF)
+    
     assign(x = paste(j,"_Wide", sep=""), value = WideFormatDF)
     
   }
