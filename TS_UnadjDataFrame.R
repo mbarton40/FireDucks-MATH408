@@ -12,9 +12,16 @@ for (i in UnadjNameListWide){
   
 }
 
+#rm(curr_var)
+
 view(All_Unadj_DF)
 
 
-view(curr_var)
 
 #FUCK U34GVS!
+
+y <- c("U", "G")
+
+x <- match(1, str_detect("C", y))
+x
+class(x)

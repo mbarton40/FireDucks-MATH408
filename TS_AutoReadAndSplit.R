@@ -2,6 +2,8 @@
 library(tidyverse)
 library(lubridate)
 library(rio)
+library(stringr)
+library(stringi)
 
 #Drawing in the data file URLs
 source("TS_DataFiles.R")
@@ -50,6 +52,15 @@ for (i in dataFiles_URL){
   
   #Appends a name list to create a chr list of all names of all ts
   TSnameList_Unadjusted <- unique(WideData_Unadjusted$names)
+  
+  IndexU34GVS <- match(1, str_detect("U34GVS", TSnameList_Unadjusted))
+  if (!is.na(IndexU34GVS)){
+    TSnameList_Unadjusted <- replace (TSnameList_Unadjusted, IndexU34GVS, "")
+    
+  }
+  
+  TSnameList_Unadjusted <- stri_remove_empty(TSnameList_Unadjusted, na_empty = FALSE)
+  
   UnadjNameList <- append(UnadjNameList, TSnameList_Unadjusted)
   
   TSnameList_Unadjusted_Wide <- paste(TSnameList_Unadjusted,"_Wide", sep = "")
@@ -64,7 +75,7 @@ for (i in dataFiles_URL){
     pre_Covid_AS <- After_Split %>%
       slice_head(n = 28) %>%
       slice_tail(n = 27)
-    assign(x = j, value = pre_Covid_AS)
+    #assign(x = j, value = pre_Covid_AS)
     
     #Formats data to get into ts and wide data objects
     temp_Long_1 <- gather(pre_Covid_AS, Month, Value, January:December, factor_key = TRUE)
@@ -102,8 +113,8 @@ for (i in dataFiles_URL){
 }
 
 #Removes unnecessary variables
-rm(After_Split, pre_Covid_AS, BaseFile, temp_Long_1, temp_Long_2, temp_Long_3,
-   temp_Long_4, temp_Long_5, WideFormatDF, WideData, WideData_Unadjusted,
-   i, j, FileNameToRead, TSnameList_Unadjusted, TSnameList_Unadjusted_Wide,
-      TS_ItS, TS_NO, TS_Shipments, TS_TI, TS_UO, TS_UOtS, dataFiles_URL)
+# rm(After_Split, pre_Covid_AS, BaseFile, temp_Long_1, temp_Long_2, temp_Long_3,
+#    temp_Long_4, temp_Long_5, WideFormatDF, WideData, WideData_Unadjusted,
+#    i, j, FileNameToRead, TSnameList_Unadjusted, TSnameList_Unadjusted_Wide,
+#       TS_ItS, TS_NO, TS_Shipments, TS_TI, TS_UO, TS_UOtS, dataFiles_URL, curr_name)
 
