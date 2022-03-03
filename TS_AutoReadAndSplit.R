@@ -1,11 +1,4 @@
-#Bringing in libraries for better functionality
-library(tidyverse)
-library(lubridate)
-library(rio)
-library(stringr)
-library(stringi)
-
-#Drawing in the data file URLs
+#Drawing in the data file URLs.
 source("TS_DataFiles.R")
 
 #Initializing name lists/variables for the loop
@@ -70,13 +63,13 @@ for (i in dataFiles_URL){
   #smaller data frames and then organizes them into Time Series data format.
   
   for (j in TSnameList_Unadjusted){
-    #Splits df and cuts off COVID Years...Also creates regular df object
-    After_Split <- assign(x = j, value = splitTSdf(j))
+    #Splits df and cuts off COVID Years...Also creates regular df object (Commented out)
+    After_Split <- splitTSdf(j)
     pre_Covid_AS <- After_Split %>%
       slice_head(n = 28) %>%
       slice_tail(n = 27)
     #assign(x = j, value = pre_Covid_AS)
-    
+
     #Formats data to get into ts and wide data objects
     temp_Long_1 <- gather(pre_Covid_AS, Month, Value, January:December, factor_key = TRUE)
     temp_Long_2 <- temp_Long_1 %>%
@@ -113,8 +106,9 @@ for (i in dataFiles_URL){
 }
 
 #Removes unnecessary variables
-# rm(After_Split, pre_Covid_AS, BaseFile, temp_Long_1, temp_Long_2, temp_Long_3,
-#    temp_Long_4, temp_Long_5, WideFormatDF, WideData, WideData_Unadjusted,
-#    i, j, FileNameToRead, TSnameList_Unadjusted, TSnameList_Unadjusted_Wide,
-#       TS_ItS, TS_NO, TS_Shipments, TS_TI, TS_UO, TS_UOtS, dataFiles_URL, curr_name)
+rm(After_Split, pre_Covid_AS, BaseFile, temp_Long_1, temp_Long_2, temp_Long_3,
+   temp_Long_4, temp_Long_5, WideFormatDF, WideData, WideData_Unadjusted,
+   i, j, FileNameToRead, TS_ItS, TS_NO, TS_Shipments, TS_TI, TS_UO, TS_UOtS, 
+   dataFiles_URL, curr_name, IndexU34GVS, TSnameList_Unadjusted,
+   TSnameList_Unadjusted_Wide)
 

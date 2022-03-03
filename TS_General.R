@@ -1,4 +1,4 @@
-source("TS_AutoReadAndSplit.R")
+source("TS_FullSource.R")
 
 plot(U11AVS_ts, 
      col=2,
