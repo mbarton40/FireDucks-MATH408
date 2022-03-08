@@ -9,4 +9,10 @@ for (i in UnadjNameListWide){
   }
 }
 
+for (i in 2:325){
+  All_Unadj_DF[,i] = as.numeric(All_Unadj_DF[,i])
+  
+}
+
+
 rm(curr_var, i)
