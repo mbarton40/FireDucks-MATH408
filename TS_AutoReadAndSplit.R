@@ -1,6 +1,3 @@
-#Drawing in the data file URLs.
-source("TS_DataFiles.R")
-
 #Initializing name lists/variables for the loop
 UnadjNameList <- c()
 UnadjNameListWide <- c()
@@ -43,7 +40,10 @@ for (i in dataFiles_URL){
     return(TSdf)
   }
   
-  #Appends a name list to create a chr list of all names of all ts
+  #Appends a name list to create a char list of all names of all ts. Also deletes
+  #a time series that does not have all data points for every year because it was
+  #unpublished.
+  
   TSnameList_Unadjusted <- unique(WideData_Unadjusted$names)
   
   IndexU34GVS <- match(1, str_detect("U34GVS", TSnameList_Unadjusted))
@@ -111,4 +111,3 @@ rm(After_Split, pre_Covid_AS, BaseFile, temp_Long_1, temp_Long_2, temp_Long_3,
    i, j, FileNameToRead, TS_ItS, TS_NO, TS_Shipments, TS_TI, TS_UO, TS_UOtS, 
    dataFiles_URL, curr_name, IndexU34GVS, TSnameList_Unadjusted,
    TSnameList_Unadjusted_Wide)
-

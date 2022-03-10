@@ -5,9 +5,12 @@ library(rio)
 library(stringr)
 library(stringi)
 
-#Drawing all data in and creating the organized data frame.
+#Drawing in the data file URLs.
+source("TS_DataFiles.R")
+
+#Drawing all data in and creating an organized data frame of Unadj TS
 source("TS_AutoReadAndSplit.R")
 source("TS_UnadjDataFrame.R")
 
-#Draws in the Sample Mean function and runs over data set.
+#Draws in the Sample Mean and ANOVA Test Function.
 #source("TS_SampleMeansAndANOVA.R")

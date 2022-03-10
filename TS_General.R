@@ -1,5 +1,11 @@
 source("TS_FullSource.R")
 
+#What do we want the final I/O to be? Input a mean and output results from an
+#ANOVA test and a graph of the resulting series?
+
+
+
+#General plotting techniques.
 plot(U11AVS_ts, 
      col=2,
      ylim = c(3000,12000),
