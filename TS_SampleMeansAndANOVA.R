@@ -25,10 +25,54 @@ our_mean_cluster <- function(m, numOfSamples = 10, numSeries = 5){
     mutate(AbsDiff = abs(TS_Sample_Means - m)) %>%
     arrange(AbsDiff)
   
-  return(orderedMeans[1:numSeries,])
+  #Takes the first 5/or inputted number and stores to df.
+  PCTS <- (orderedMeans[1:numSeries,])
+  
+  #ANOVA Test (1-way)
+  PCTS_MeansAndNames <- PCTS %>%
+    select(TS_Names, TS_Sample_Means)
+  
+  view(PCTS_MeansAndNames)
+  
+  #Pass/Fail List of TS that are either good with H0 or H1
+  #Plot the list if it passes, if not return NOTHING
+  
 }
 
 our_mean_cluster(30000)
 
 
-#Df col1=names/ col2-sample mean /col3-abs diff from input mean
+
+#TESTING BELOW:
+m = 30000
+numSeries = 5
+numOfSamples = 10
+
+colIndexSample <- sample(intToSample, numOfSamples)
+colIndexSampleSorted <- sort(colIndexSample)
+
+sampleMean_Unadj_DF <- All_Unadj_DF[,1] %>%
+  cbind(All_Unadj_DF[,colIndexSampleSorted]) %>%
+  rename("TS_Names" = ".") %>%
+  mutate(TS_Sample_Means = rowMeans(sampleMean_Unadj_DF[,2:(numOfSamples+1)]))
+
+orderedMeans <- sampleMean_Unadj_DF %>%
+  mutate(AbsDiff = abs(TS_Sample_Means - m)) %>%
+  arrange(AbsDiff)
+
+PCTS <- (orderedMeans[1:numSeries,])
+
+#ANOVA Test (1-way)
+PCTS_MandN <- PCTS %>%
+  select(TS_Names, TS_Sample_Means)
+
+
+
+
+PCTS_SampleMeanANOVA = aov(TS_Sample_Means ~ TS_Names, data = PCTS_MandN)
+
+summary(PCTS_SampleMeanANOVA)
+#Pass/Fail List of TS that are either good with H0 or H1
+#Plot the list if it passes, if not return NOTHING
+
+
