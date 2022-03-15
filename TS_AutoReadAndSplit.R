@@ -68,6 +68,7 @@ for (i in dataFiles_URL){
     pre_Covid_AS <- After_Split %>%
       slice_head(n = 28) %>%
       slice_tail(n = 27)
+    #If needed original split df for each ts, un-comment command below:
     #assign(x = j, value = pre_Covid_AS)
 
     #Formats data to get into ts and wide data objects

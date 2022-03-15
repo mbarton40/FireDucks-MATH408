@@ -22,6 +22,7 @@ s <- sample(1:100, n)
 i <- c(s,100+s, 200+s, 300+s, 400+s, 500+s)
 d <- data[i,]
 str(d)
+view(d)
 
 pattern <- c(rep('Normal', n),
              rep('Cyclic', n),
