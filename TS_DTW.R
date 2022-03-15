@@ -15,7 +15,7 @@ DTW_All_Unadj_HC <- hclust(DTW_All_Unadj_Dist, method = "average")
 
 idendro(h = DTW_All_Unadj_HC, zoomFactor = 1/240, hscale = 2.5, vscale = 2.5)
 
-###
+###Trying with a smaller DF since all data takes long###
 
 DTW_All_Unadj_DF_Small <- head(All_Unadj_DF, 25)
 rownames(DTW_All_Unadj_DF_Small) <- DTW_All_Unadj_DF_Small[,1]
