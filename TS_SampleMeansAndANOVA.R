@@ -55,6 +55,25 @@ our_mean_cluster <- function(m, numOfSamples = 10, numSeries = 5){
     #Since these passed the ANOVA, we are plotting in this step
     
     names_compared_ts <- paste(names_compared,"_ts", sep = "")
+    
+    #This finds the best plotting bounds
+    min_bound <- min(get(names_compared_ts[1]))
+    max_bound <- max(get(names_compared_ts[1]))
+    
+    for (i in names_compared_ts){
+      if (i != names_compared_ts[1]){
+        curr_ts <- get(i)
+        min_curr_ts <- min(curr_ts)
+        max_curr_ts <- max(curr_ts)
+        if (min_curr_ts < min_bound){
+          min_bound <- min_curr_ts
+        }
+        if (max_curr_ts > max_bound){
+          max_bound <- max_curr_ts
+        }
+      }
+    }
+    
     plotting_count = 0
     color_count = 0
     for (i in names_compared_ts){
@@ -64,7 +83,8 @@ our_mean_cluster <- function(m, numOfSamples = 10, numSeries = 5){
         plot(curr_ts, 
              col = color_count,
              main = paste(names_compared_str, "Time Series Plot"),
-             ylab = "Value")
+             ylab = "Value",
+             ylim = c(min_bound,max_bound))
         color_count = color_count + 1
         plotting_count = plotting_count + 1
       }
