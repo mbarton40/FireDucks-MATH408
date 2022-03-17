@@ -16,7 +16,7 @@ source("TS_AutoReadAndSplit.R")
 source("TS_UnadjDataFrame.R")
 
 #Draws in the Sample Mean and ANOVA Test Function.
-#source("TS_SampleMeansAndANOVA.R")
+source("TS_SampleMeansAndANOVA.R")
 
 #Runs Dynamic Time Warping on All Time Series.
 #source("TS_DTW.R")

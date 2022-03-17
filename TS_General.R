@@ -1,21 +1,4 @@
 source("TS_FullSource.R")
 
-#What do we want the final I/O to be? Input a mean and output results from an
-#ANOVA test and a graph of the resulting series?
 
-
-
-#General plotting techniques.
-plot(U11AVS_ts, 
-     col=2,
-     ylim = c(3000,12000),
-     main = "U11AVS vs U11BVS Time Series",
-     ylab = "Value")
-lines(U11BVS_ts,
-      col= 3)
-legend("bottomright",                           
-       c("U11AVS","U11BVS"),
-       lty = 1,
-       col = 2:3,
-       cex = 1)
-
+our_mean_cluster(m = 31500, numSeries = 2, numOfSamples = 50)

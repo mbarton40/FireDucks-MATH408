@@ -1,3 +1,6 @@
+#This script pulls in all data and creates all objects required for further
+#analysis and functions.
+
 #Initializing name lists/variables for the loop
 UnadjNameList <- c()
 UnadjNameListWide <- c()
