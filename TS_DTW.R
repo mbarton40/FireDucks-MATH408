@@ -8,12 +8,22 @@ DTW_All_Unadj_Dist <- dist(DTW_All_Unadj_DF, method = "DTW")
 
 DTW_All_Unadj_HC <- hclust(DTW_All_Unadj_Dist, method = "average")
 
+
+# png("plotdendogram.png",width=1920,height=1080)
+# par(cex = .75,font = 3)
+# plot(DTW_All_Unadj_HC,
+#      main = "Unadjusted TS DTW",
+#      hang = -1)
+# dev.off()
+
 #Internal plotting (not as interactive)
 # plot(DTW_All_Unadj_HC,
 #      main = "Unadjusted TS DTW",
-#      xlim = c(1,25), ylim = c(0, 1000000))
+#      cex = 0.75,hang = -1)
 
-idendro(h = DTW_All_Unadj_HC, zoomFactor = 1/240, hscale = 2.5, vscale = 2.5)
+idendro(h = DTW_All_Unadj_HC,
+        hscale = 3.5, vscale = 2.3,
+        cex.axis = 1.25)
 
 ###Trying with a smaller DF since all data takes long###
 
