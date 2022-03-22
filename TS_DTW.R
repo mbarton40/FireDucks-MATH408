@@ -16,26 +16,33 @@ DTW_All_Unadj_HC <- hclust(DTW_All_Unadj_Dist, method = "average")
 #      hang = -1)
 # dev.off()
 
-#Internal plotting (not as interactive)
-# plot(DTW_All_Unadj_HC,
-#      main = "Unadjusted TS DTW",
-#      cex = 0.75,hang = -1)
 
+
+#Internal plotting (not as interactive)
+plot(DTW_All_Unadj_HC,
+     main = "Unadjusted TS DTW",
+     cex = 0.75,
+     hang = -1,
+     cex = 0.5)
+
+#Interactive Plot (FIXED AND WORKING)
 idendro(h = DTW_All_Unadj_HC,
         hscale = 3.5, vscale = 2.3,
-        cex.axis = 1.25)
+        cex = 1.25,
+        mai = c(1,1,1,3),
+        main = "Unadjusted TS DTW")
 
 ###Trying with a smaller DF since all data takes long###
 
-DTW_All_Unadj_DF_Small <- head(All_Unadj_DF, 25)
-rownames(DTW_All_Unadj_DF_Small) <- DTW_All_Unadj_DF_Small[,1]
-DTW_All_Unadj_DF_Small <- DTW_All_Unadj_DF_Small[,-1]
-
-DTW_All_Unadj_Dist_Small <- dist(DTW_All_Unadj_DF_Small, method = "DTW")
-
-DTW_All_Unadj_HC_Small <- hclust(DTW_All_Unadj_Dist_Small, method = "average")
-
-idendro(h = DTW_All_Unadj_HC_Small, zoomFactor = 1/240, hscale = 150)
+# DTW_All_Unadj_DF_Small <- head(All_Unadj_DF, 25)
+# rownames(DTW_All_Unadj_DF_Small) <- DTW_All_Unadj_DF_Small[,1]
+# DTW_All_Unadj_DF_Small <- DTW_All_Unadj_DF_Small[,-1]
+# 
+# DTW_All_Unadj_Dist_Small <- dist(DTW_All_Unadj_DF_Small, method = "DTW")
+# 
+# DTW_All_Unadj_HC_Small <- hclust(DTW_All_Unadj_Dist_Small, method = "average")
+# 
+# idendro(h = DTW_All_Unadj_HC_Small, zoomFactor = 1/240, hscale = 150)
 
 
 #URL for idendr0 package details: 
