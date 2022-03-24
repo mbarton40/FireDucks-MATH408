@@ -1,6 +1,6 @@
 source("TS_FullSource.R")
 
-our_mean_cluster(m = 3150, numSeries = 3, numOfSamples = 50)
+our_mean_cluster(m = 25000, numSeries = 2, numOfSamples = 100)
 mean(U11ATI_ts)
 
 
@@ -26,3 +26,30 @@ idendro(h = DTW_All_Unadj_HC,
 #      main = "Unadjusted TS DTW",
 #      hang = -1)
 # dev.off()
+
+
+
+
+
+
+plot(UTCGTI_ts, 
+     col = "black",
+     main = "UTCGTI and UMTMWI",
+     ylab = "Value")
+
+
+lines(UMTMWI_ts, col = "red")
+
+# 580,000 is height difference between U36ZUO and U25SFI
+# between 880,000 is difference between UTCGTI and UMTMWI 
+
+
+legend("bottomright",                           
+       c("UTCGTI", "UMTMWI"),
+       lty = 1,
+       col = 1:2,
+       cex = 1)
+
+
+
+
