@@ -1,10 +1,14 @@
 source("TS_FullSource.R")
 
 our_mean_cluster(m = 25000, numSeries = 2, numOfSamples = 100)
-mean(U11ATI_ts)
+
+
 graphing_ts(ts_names = c("UCDGVS", "UCDGNO"))
 
-#Internal plotting (not as interactive)
+
+
+
+#Internal plotting (not as interactive and labels arent working)
 plot(DTW_All_Unadj_HC,
      main = "Unadjusted TS DTW",
      cex = 0.75,
@@ -28,27 +32,8 @@ idendro(h = DTW_All_Unadj_HC,
 # dev.off()
 
 
-
-
-
-
-plot(UTCGTI_ts, 
-     col = "black",
-     main = "UTCGTI and UMTMWI",
-     ylab = "Value")
-
-
-lines(UMTMWI_ts, col = "red")
-
 # 580,000 is height difference between U36ZUO and U25SFI
-# between 880,000 is difference between UTCGTI and UMTMWI 
-
-
-legend("bottomright",                           
-       c("UTCGTI", "UMTMWI"),
-       lty = 1,
-       col = 1:2,
-       cex = 1)
+# 880,000 is height difference between UTCGTI and UMTMWI 
 
 
 
