@@ -18,5 +18,5 @@ source("TS_UnadjDataFrame.R")
 #Draws in the Sample Mean and ANOVA Test Function.
 source("TS_SampleMeansAndANOVA.R")
 
-#Runs Dynamic Time Warping on All Time Series.
-#source("TS_DTW.R")
+#Runs Dynamic Time Warping HC Average on All Time Series.
+source("TS_DTW.R")
