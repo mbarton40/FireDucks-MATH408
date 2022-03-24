@@ -5,6 +5,7 @@ graphing_ts <- function(ts_names){
   names_with_ts <- paste(ts_names,"_ts", sep = "")
   ts_names_chr <- as.character(ts_names)
   
+  #This finds the best plotting bounds
   min_bound <- min(get(names_with_ts[1]))
   max_bound <- max(get(names_with_ts[1]))
   
@@ -22,6 +23,7 @@ graphing_ts <- function(ts_names){
     }
   }
   
+  #Initializing plotting and color counts and begins plotting
   plotting_count = 0
   color_count = 0
   for (i in names_with_ts){

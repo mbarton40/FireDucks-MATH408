@@ -20,3 +20,6 @@ source("TS_SampleMeansAndANOVA.R")
 
 #Runs Dynamic Time Warping HC Average on All Time Series.
 source("TS_DTW.R")
+
+#Draws in a Graphing Function for the TS graphs
+source("TS_Graphing.R")
