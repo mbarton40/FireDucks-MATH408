@@ -4,8 +4,7 @@ DTW_All_Unadj_DF <- All_Unadj_DF
 rownames(DTW_All_Unadj_DF) <- DTW_All_Unadj_DF[,1]
 DTW_All_Unadj_DF <- DTW_All_Unadj_DF[,-1]
 
-print("Dynamic Time Warping is happening...Buckle your seatbelts and get ready to hear your fans run!")
-print("Also, dont close RStudio or run anything until you see 'There were # warnings'")
+print("Dynamic Time Warping is running... do not close RStudio or run anything until you see 'There were # warnings'")
 
 DTW_All_Unadj_Dist <- dist(DTW_All_Unadj_DF, method = "DTW")
 
