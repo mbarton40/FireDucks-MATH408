@@ -1,8 +1,14 @@
 source("TS_FullSource.R")
 
+
+
 our_mean_cluster(m = 25000, numSeries = 2, numOfSamples = 100)
 
+
+
+
 graphing_ts()
+
 
 #Interactive Plot (FIXED AND WORKING)
 idendro(h = DTW_All_Unadj_HC,

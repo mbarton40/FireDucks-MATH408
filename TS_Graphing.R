@@ -20,7 +20,7 @@ graphing_ts <- function(){
   #If they are satisfied with their entries, it continues the program.
   quick_check <- as.character(readline(prompt = "If you made any mistakes while typing the plots, please type 'EXIT'. Otherwise, hit 'ENTER': "))
   
-  if (quick_check != 'STOP'){
+  if (quick_check != 'EXIT'){
     
     #Creates a few useful ways of storing the names
     names_with_ts <- paste(ts_names,"_ts", sep = "")
