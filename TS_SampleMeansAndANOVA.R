@@ -74,6 +74,7 @@ our_mean_cluster <- function(m, numOfSamples = 10, numSeries = 5){
       }
     }
     
+    #Initializing variables and begins plotting
     plotting_count = 0
     color_count = 0
     for (i in names_compared_ts){
