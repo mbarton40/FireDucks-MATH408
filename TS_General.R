@@ -2,7 +2,7 @@ source("TS_FullSource.R")
 
 
 
-our_mean_cluster(m = 25000, numSeries = 2, numOfSamples = 100)
+our_mean_cluster(m = 30000, numSeries = 2, numOfSamples = 100)
 
 
 
