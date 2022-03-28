@@ -23,10 +23,10 @@ idendro(h = DTW_All_Unadj_HC,
 # 880,000 is height difference between UTCGTI and UMTMWI 
 
 #Internal plotting (not as interactive and labels arent working)
-# plot(DTW_All_Unadj_HC,
-#      main = "Unadjusted TS DTW",
-#      cex = 0.75,
-#      hang = -1,
-#      cex = 0.5)
+plot(DTW_All_Unadj_HC,
+     main = "Unadjusted TS DTW",
+     cex = 0.75,
+     hang = -1,
+     cex = 0.5)
 
 

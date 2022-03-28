@@ -74,7 +74,7 @@ for (i in dataFiles_URL){
     #If needed original split df for each ts, un-comment command below:
     #assign(x = j, value = pre_Covid_AS)
 
-    #Formats data to get into ts and wide data objects
+    #Formats data to get into wide data object
     temp_Long_1 <- gather(pre_Covid_AS, Month, Value, January:December, factor_key = TRUE)
     temp_Long_2 <- temp_Long_1 %>%
       mutate(Month = substring(Month,1,3)) %>%
@@ -84,14 +84,11 @@ for (i in dataFiles_URL){
     temp_Long_4 <- temp_Long_3 %>%
       select(MonYear,Value)
     
-    #Creates time series object
-    temp_Long_5 <- ts(data = temp_Long_4$Value)
-    assign(x = paste(j,"_ts", sep = ""), value = temp_Long_5)
-    
     #Creates a wide data object
     WideFormatDF <- as.data.frame(t(temp_Long_4))
     
-    colnames(WideFormatDF) <- WideFormatDF[1,]
+    date_List <- WideFormatDF[1,]
+    colnames(WideFormatDF) <- date_List
     WideFormatDF <- WideFormatDF[-1,]
     
     row.names(WideFormatDF) <- NULL
@@ -99,6 +96,12 @@ for (i in dataFiles_URL){
     WideFormatDF <- cbind(curr_name, WideFormatDF)
     
     assign(x = paste(j,"_Wide", sep=""), value = WideFormatDF)
+    
+    #Creates time series object and labels to exclude COVID and '92
+    temp_Long_5 <- ts(data = temp_Long_4$Value,
+                      start = c(1993,1),
+                      frequency = 12)
+    assign(x = paste(j,"_ts", sep = ""), value = temp_Long_5)
     
   }
   
