@@ -77,7 +77,7 @@ graphing_ts <- function(){
     if (photo_test !='NO'){
       
       png_name_dir <- paste("Graphs/",ts_names_str, " TS_Plot", ".png", sep = "")
-      png(png_name_dir,width=1600,height=800)
+      png(png_name_dir,width=1200,height=600)
       
       #Running previous code again to capture it in the file
       plotting_count = 0

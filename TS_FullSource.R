@@ -23,5 +23,5 @@ source("TS_SampleMeansAndANOVA.R")
 #Draws in a Graphing Function for the TS graphs
 source("TS_Graphing.R")
 
-#Runs Dynamic Time Warping HC Average on All Time Series.
+#Runs Dynamic Time Warping HC Average on All Time Series if user wants :)
 source("TS_DTW.R")
