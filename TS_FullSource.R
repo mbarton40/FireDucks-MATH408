@@ -11,8 +11,10 @@ library(dendextend)
 #Drawing in the data file URLs.
 source("TS_DataFiles.R")
 
-#Drawing all data in and creating an organized data frame of Unadj TS
+#Drawing all data in, filtering out ones we dont want to look at
+#and create an organized data frame of Unadj TS
 source("TS_AutoReadAndSplit.R")
+source("TS_FilterCategories.R")
 source("TS_UnadjDataFrame.R")
 
 #Draws in the Sample Mean and ANOVA Test Function.

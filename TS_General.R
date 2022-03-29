@@ -1,11 +1,6 @@
 source("TS_FullSource.R")
 
-
-
 our_mean_cluster(m = 30000, numSeries = 2, numOfSamples = 100)
-
-
-
 
 graphing_ts()
 
