@@ -1,3 +1,6 @@
+#This is a general script that we work on that allows us to try different functions
+#and our 'main' working environment.
+
 #Sourcing EVERYTHING!
 source("TS_FullSource.R")
 
@@ -14,7 +17,7 @@ idendro(h = DTW_All_Unadj_HC,
 #SampleMeansANOVA Cluster Function
 # our_mean_cluster(m = 30000, numSeries = 2, numOfSamples = 100)
 
-#Printing our Dendro to PNG
+#Printing our Dendrogram to PNG
 # png("Graphs/Full_Dendro.png",width=1920,height=1080)
 # ggdendrogram(DTW_All_Unadj_HC, rotate = FALSE, theme_dendro = FALSE, cex = 0.75, )
 # dev.off()
