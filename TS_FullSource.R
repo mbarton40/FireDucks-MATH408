@@ -7,6 +7,8 @@ library(stringi)
 library(dtw)
 library(idendr0)
 library(dendextend)
+library(ggplot2)
+library(ggdendro)
 
 #Drawing in the data file URLs.
 source("TS_DataFiles.R")

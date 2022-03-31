@@ -13,10 +13,13 @@ idendro(h = DTW_All_Unadj_HC,
 #SampleMeansANOVA Cluster Function
 # our_mean_cluster(m = 30000, numSeries = 2, numOfSamples = 100)
 
+#Printing our Dendro to PNG
+# png("Graphs/Full_Dendro.png",width=1920,height=1080)
+# ggdendrogram(DTW_All_Unadj_HC, rotate = FALSE, theme_dendro = FALSE, cex = 0.75, )
+# dev.off()
+
 #Internal plotting (not as interactive and labels arent working)
-plot(DTW_All_Unadj_HC,
-     main = "Unadjusted TS DTW",
-     hang = -1,
-     cex = 0.5)
-
-
+# plot(DTW_All_Unadj_HC,
+#      main = "Unadjusted TS DTW",
+#      hang = -1,
+#      cex = 0.5)
