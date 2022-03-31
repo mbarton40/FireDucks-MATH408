@@ -20,4 +20,4 @@ UnadjNameListWide_Keep <- paste(UnadjNameList_Keep,"_Wide",sep = "")
 
 rm(list = UnadjNameListWide_Rem)
 rm(list = UnadjNameListTS_Rem)
-rm(curr_ts_wide_name, curr_ts_ts_name, UnadjNameListTS_Rem, UnadjNameListWide_Rem)
+rm(j, curr_ts_wide_name, curr_ts_ts_name, UnadjNameListTS_Rem, UnadjNameListWide_Rem)

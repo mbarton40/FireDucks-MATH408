@@ -1,9 +1,8 @@
+#Sourcing EVERYTHING!
 source("TS_FullSource.R")
 
-our_mean_cluster(m = 30000, numSeries = 2, numOfSamples = 100)
-
+#TS Graphing Function
 graphing_ts()
-
 
 #Interactive Plot (FIXED AND WORKING)
 idendro(h = DTW_All_Unadj_HC,
@@ -12,16 +11,14 @@ idendro(h = DTW_All_Unadj_HC,
         mai = c(1,1,1,3),
         main = "Unadjusted TS DTW")
 
-
-
-# 580,000 is height difference between U36ZUO and U25SFI
-# 880,000 is height difference between UTCGTI and UMTMWI 
+#SampleMeansANOVA Cluster Function
+# our_mean_cluster(m = 30000, numSeries = 2, numOfSamples = 100)
 
 #Internal plotting (not as interactive and labels arent working)
-plot(DTW_All_Unadj_HC,
-     main = "Unadjusted TS DTW",
-     cex = 0.75,
-     hang = -1,
-     cex = 0.5)
+# plot(DTW_All_Unadj_HC,
+#      main = "Unadjusted TS DTW",
+#      cex = 0.75,
+#      hang = -1,
+#      cex = 0.5)
 
 
