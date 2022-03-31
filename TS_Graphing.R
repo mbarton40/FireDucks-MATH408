@@ -22,11 +22,16 @@ graphing_ts <- function(){
   
   if (quick_check != 'EXIT'){
     
+    #Creating a vector to store colors
+    colors <- c(1, 2, 3, 4, 5, 6, 7, 8, "darkgreen",
+                "deeppink4", "lightcyan", "mediumorchid1", "mediumpurple1",
+                "orange4", "seagreen1")
+    
     #Creates a few useful ways of storing the names
     names_with_ts <- paste(ts_names,"_ts", sep = "")
     ts_names_chr <- as.character(ts_names)
     ts_names_str <- toString(ts_names)
-  }
+  
     
   #This finds the best plotting bounds
     min_bound <- min(get(names_with_ts[1]))
@@ -47,14 +52,14 @@ graphing_ts <- function(){
     }
     #Initializing plotting and color counts and begins plotting
     plotting_count = 0
-    color_count = 0
+    color_count = 1
     for (i in names_with_ts){
       curr_ts <- get(i)
       
       if (plotting_count == 0){
         plot(curr_ts, 
-             col = color_count,
-             main = paste(ts_names_str, "Time Series Plot"),
+             col = colors[color_count],
+             #main = paste(ts_names_str, "Time Series Plot"),
              ylab = "Value",
              ylim = c(min_bound,max_bound))
         color_count = color_count + 1
@@ -62,13 +67,14 @@ graphing_ts <- function(){
       }
       
       if (plotting_count != 0){
-        lines(curr_ts, col = color_count)
+        lines(curr_ts, 
+              col = colors[color_count])
         color_count = color_count + 1
       }
       legend("bottomright",                           
              ts_names_chr,
              lty = 1,
-             col = 0:color_count+1,
+             col = colors[1]:colors[color_count],
              cex = 1)
     }
     
@@ -87,8 +93,8 @@ graphing_ts <- function(){
         
         if (plotting_count == 0){
           plot(curr_ts, 
-               col = color_count,
-               main = paste(ts_names_str, "Time Series Plot"),
+               col = colors[color_count],
+               #main = paste(ts_names_str, "Time Series Plot"),
                ylab = "Value",
                ylim = c(min_bound,max_bound))
           color_count = color_count + 1
@@ -96,15 +102,17 @@ graphing_ts <- function(){
         }
         
         if (plotting_count != 0){
-          lines(curr_ts, col = color_count)
+          lines(curr_ts, 
+                col = colors[color_count])
           color_count = color_count + 1
         }
         legend("bottomright",                           
                ts_names_chr,
                lty = 1,
-               col = 0:color_count+1,
+               col = colors[1]:colors[color_count],
                cex = 1)
       }
         dev.off()
     }
-}
+  }
+}  
