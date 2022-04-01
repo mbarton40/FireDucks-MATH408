@@ -17,7 +17,7 @@ graphing_ts <- function(){
   }
   
   #This is a quick error check to make sure the user needed to exit due to a typing mistake.
-  #If they are satisfied with their entries, it continues the program.
+  #If they are satisfied with their entries, it continues the function.
   quick_check <- as.character(readline(prompt = "If you made any mistakes while typing the plots, please type 'EXIT'. Otherwise, hit 'ENTER': "))
   
   if (quick_check != 'EXIT'){
@@ -33,7 +33,7 @@ graphing_ts <- function(){
     ts_names_str <- toString(ts_names)
   
     
-  #This finds the best plotting bounds
+    #This finds the best plotting bounds
     min_bound <- min(get(names_with_ts[1]))
     max_bound <- max(get(names_with_ts[1]))
     
@@ -78,7 +78,7 @@ graphing_ts <- function(){
              cex = 1)
     }
     
-    #A PNG prompt to see if they want the exported picture
+    #A PNG prompt to see if they want the exported picture and takes the file name they want if they do want a PNG
     photo_test <- as.character(readline(prompt = "If you DO NOT want this exported to PNG, type 'NO'. Otherwise, enter the name you want for the PNG file of the graph: "))
     if (photo_test !='NO'){
       photo_name <- photo_test

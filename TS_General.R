@@ -5,7 +5,6 @@
 source("TS_FullSource.R")
 
 #TS Graphing Function
-
 graphing_ts()
 
 #Interactive Plot (FIXED AND WORKING)
@@ -22,7 +21,7 @@ idendro(h = DTW_All_Unadj_HC,
 # ggdendrogram(DTW_All_Unadj_HC, rotate = FALSE, theme_dendro = FALSE, cex = 0.75, )
 # dev.off()
 
-#Internal plotting (not as interactive and labels arent working)
+#Internal plotting (not as interactive and labels are small)
 # plot(DTW_All_Unadj_HC,
 #      main = "Unadjusted TS DTW",
 #      hang = -1,

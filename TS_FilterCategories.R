@@ -1,9 +1,11 @@
 #Removing time series we dont want to look at!
 
+#Initializing lists
 UnadjNameList_Keep <- c()
 UnadjNameListWide_Rem <- c()
 UnadjNameListTS_Rem <- c()
 
+#Iterates through all TS series and only keeps 'VS', 'NO', and 'TI' for us to look at
 for (j in UnadjNameList){
   if (!(str_detect(j, "(VS)$")) && !(str_detect(j, "(NO)$")) && !(str_detect(j, "(TI)$"))){
     curr_ts_wide_name <- paste(j,"_Wide", sep="")
