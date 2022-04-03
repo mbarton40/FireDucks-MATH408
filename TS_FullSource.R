@@ -35,5 +35,3 @@ if (DTW_Question == "NO"){
   print("You selected 'NO'. If you want to run it in the future, simply type 'source('TS_DTW.R')' in the console!")
 }
 rm(DTW_Question)
-
-
