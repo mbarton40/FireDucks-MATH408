@@ -144,3 +144,8 @@ legend("topright",
         cex = 2,
         )
 dev.off()
+
+#Creating a cut plot of the dendrogram for our report
+png("Graphs/Part_DTW_Avg_Dendro_Color_VS_TI_NO.png",width=1920,height=1080)
+plot(DTW_All_Unadj_Dend, cex = 0.75, horiz = F)
+dev.off()
