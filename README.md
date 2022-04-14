@@ -1,5 +1,5 @@
 # FireDucks-MATH408
-SUNY Fredonia MATH 408 Project Spring 2022
+SUNY Fredonia MATH 408 PIC-MATH Project (Spring 2022)
 
 Adjustment Made Easy: A Look Into Clustering Seemingly Unrelated Census Data
 -----------------------------------------------------------------------------
